@@ -15,6 +15,10 @@ public class Plateau
 	 * Largeur du plateau
 	 */
 	private final int largeur;
+	/**
+	 * Tableau des cases du plateau
+	 */
+	private int[][] cases;
 	
 	/**
 	 * Crée un nouveau plateau de largeur par défaut.
@@ -22,5 +26,7 @@ public class Plateau
 	public Plateau()
 	{
 		this.largeur = LARGEUR_DEFAUT;
+		this.cases = new int[this.largeur][this.largeur];
+		
 	}
 }
