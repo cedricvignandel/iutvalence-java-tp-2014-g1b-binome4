@@ -11,7 +11,7 @@ public class TilePuzzle
 	 */
 	public TilePuzzle()
 	{
-		Plateau plateauDeTilePuzzle = new Plateau();
+		Plateau plateau = new Plateau();
 		Joueur joueur = new Joueur();
 	}
 
