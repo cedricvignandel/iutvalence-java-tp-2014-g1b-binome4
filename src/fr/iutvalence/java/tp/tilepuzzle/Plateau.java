@@ -21,12 +21,19 @@ public class Plateau
 	private int[][] cases;
 	
 	/**
-	 * Crée un nouveau plateau de largeur par défaut.
+	 * Crée un nouveau plateau de largeur par défaut, avec toutes les cases 
+	 * éteintes.
 	 */
 	public Plateau()
 	{
 		this.largeur = LARGEUR_DEFAUT;
 		this.cases = new int[this.largeur][this.largeur];
-		
+		for (int colonne = 0; colonne < this.cases.length; colonne++)
+		{
+			for (int ligne = 0; ligne < this.cases[colonne].length; ligne++)
+			{
+				this.cases[colonne][ligne] = 0;
+			}
+		}
 	}
 }
