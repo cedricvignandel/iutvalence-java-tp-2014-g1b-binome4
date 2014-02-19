@@ -6,13 +6,22 @@ package fr.iutvalence.java.tp.tilepuzzle;
 public class TilePuzzle
 {
 	/**
+	 * Plateau de cette partie
+	 */
+	private Plateau plateau;
+	/**
+	 * Joueur de cette partie
+	 */
+	private Joueur joueur;
+	
+	/**
 	 * Crée une partie prête à être jouée.
-	 * Cela implique la mise en place d'un plateau et d'un joueur.
+	 * Cela implique la mise en place d'un plateau et d'un joueur pour cette partie.
 	 */
 	public TilePuzzle()
 	{
-		Plateau plateau = new Plateau();
-		Joueur joueur = new Joueur();
+		this.plateau = new Plateau();
+		this.joueur = new Joueur();
 	}
 
 	/**
