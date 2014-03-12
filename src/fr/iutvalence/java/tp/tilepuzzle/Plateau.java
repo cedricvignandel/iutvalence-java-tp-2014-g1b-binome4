@@ -67,7 +67,7 @@ public class Plateau
 	 * Change l'état de la case indiquée
 	 * @param caseAChanger Case à modifier
 	 */
-	public void activerCase(Position caseAChanger)
+	public void changerCase(Position caseAChanger)
 	{
 		if (this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] == CASE_ALLUMEE)
 		{
