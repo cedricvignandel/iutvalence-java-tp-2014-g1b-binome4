@@ -10,13 +10,21 @@ public class Plateau
 	 * Largeur par défaut d'un plateau
 	 */
 	private static final int LARGEUR_DEFAUT = 3;
+	/**
+	 * Valeur d'une case éteinte sur la grille
+	 */
+	private static final int CASE_ETEINTE = 0;
+	/**
+	 * Valeur d'une case allumée sur la grille
+	 */
+	private static final int CASE_ALLUMEE = 1;
 	
 	/**
 	 * Largeur du plateau
 	 */
 	private final int largeur;
 	
-	// TODO réfléchir aux valeurs que peuvent prendre les cases du tableau (constantes)
+	// TODO(fait) réfléchir aux valeurs que peuvent prendre les cases du tableau (constantes)
 	/**
 	 * Tableau des cases du plateau
 	 */
@@ -34,8 +42,8 @@ public class Plateau
 		{
 			for (int ligne = 0; ligne < this.cases[colonne].length; ligne++)
 			{
-				// TODO définir 0 comme une constante
-				this.cases[colonne][ligne] = 0;
+				// TODO(fait) définir 0 comme une constante
+				this.cases[colonne][ligne] = CASE_ETEINTE;
 			}
 		}
 	}
