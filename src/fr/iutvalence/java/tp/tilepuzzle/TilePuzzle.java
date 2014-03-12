@@ -1,22 +1,22 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
 
-// TODO écrire un commentaire plus précis
+// TODO(fait) écrire un commentaire plus précis
 /**
- * Classe principale du jeu
+ * Classe principale du jeu, initialise la partie en créant un plateau et un joueur.
  */
 public class TilePuzzle
 {
 
-	// TODO écrire un commentaire plus concis
+	// TODO(fait) écrire un commentaire plus concis
 	/**
-	 * Plateau de cette partie
+	 * Plateau
 	 */
 	private Plateau plateau;
 	
-	// TODO écrire un commentaire plus concis
+	// TODO(fait) écrire un commentaire plus concis
 	/**
-	 * Joueur de cette partie
+	 * Joueur
 	 */
 	private Joueur joueur;
 	
