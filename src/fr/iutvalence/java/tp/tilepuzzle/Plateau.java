@@ -38,13 +38,45 @@ public class Plateau
 	{
 		this.largeur = LARGEUR_DEFAUT;
 		this.cases = new int[this.largeur][this.largeur];
-		for (int colonne = 0; colonne < this.cases.length; colonne++)
+		for  (int ligne = 0; ligne < this.largeur; ligne++)
 		{
-			for (int ligne = 0; ligne < this.cases[colonne].length; ligne++)
+			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
 				// TODO(fait) définir 0 comme une constante
-				this.cases[colonne][ligne] = CASE_ETEINTE;
+				this.cases[ligne][colonne] = CASE_ETEINTE;
 			}
+		}
+	}
+	
+	/**
+	 *  Affiche le plateau dans la console
+	 */
+	public void afficherPlateau()
+	{
+		for (int ligne = 0; ligne < this.largeur; ligne++)
+		{
+			for (int colonne = 0; colonne < this.largeur; colonne++)
+			{
+				System.out.print(this.cases[ligne][colonne]);
+			}
+			System.out.println();
+		}
+	}
+	
+	/**
+	 * Change l'état de la case indiquée
+	 * @param colonne Colonne de la case à modifier
+	 * @param ligne Ligne de la case à modifier
+	 */
+	public void changerCase(int ligne, int colonne)
+	{
+		if (this.cases[ligne][colonne] == CASE_ALLUMEE)
+		{
+			this.cases[ligne][colonne] = CASE_ETEINTE;
+		}
+		else 
+		{
+			this.cases[ligne][colonne] = CASE_ALLUMEE;
 		}
 	}
 }
