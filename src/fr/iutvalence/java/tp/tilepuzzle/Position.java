@@ -27,7 +27,7 @@ public class Position
 	}
 
 	/**
-	 * @return
+	 * @return Renvoi la ligne 
 	 */
 	public int getLigne()
 	{
@@ -35,7 +35,7 @@ public class Position
 	}
 
 	/**
-	 * @return
+	 * @return Renvoi la colonne
 	 */
 	public int getColonne()
 	{
