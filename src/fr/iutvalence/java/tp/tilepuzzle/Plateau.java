@@ -65,18 +65,17 @@ public class Plateau
 	
 	/**
 	 * Change l'état de la case indiquée
-	 * @param colonne Colonne de la case à modifier
-	 * @param ligne Ligne de la case à modifier
+	 * @param caseAChanger Case à modifier
 	 */
-	public void changerCase(int ligne, int colonne)
+	public void activerCase(Position caseAChanger)
 	{
-		if (this.cases[ligne][colonne] == CASE_ALLUMEE)
+		if (this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] == CASE_ALLUMEE)
 		{
-			this.cases[ligne][colonne] = CASE_ETEINTE;
+			this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] = CASE_ETEINTE;
 		}
 		else 
 		{
-			this.cases[ligne][colonne] = CASE_ALLUMEE;
+			this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] = CASE_ALLUMEE;
 		}
 	}
 }
