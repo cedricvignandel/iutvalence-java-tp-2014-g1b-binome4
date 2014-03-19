@@ -47,7 +47,20 @@ public class Position
 	{
 		return "Position [ligne=" + this.ligne + ", colonne=" + this.colonne + "]";
 	}
-	
-	
-	
+
+	/**
+	 * Renvoie la position adjacente dans la direction indiqué à la case sur laquelle on appelle la méthode.
+	 * @param direction Direction dans laquelle on recherche une position adjacente
+	 * @return Nouvelle position
+	 */
+	public Position adjacente(String direction)
+	{
+		if (direction == "haut")
+			return new Position(this.getLigne()-1,this.getColonne());
+		if (direction == "droite")
+			return new Position(this.getLigne(),this.getColonne()+1);
+		if (direction == "bas")
+			return new Position(this.getLigne()+1,this.getColonne());
+		return new Position(this.getLigne(),this.getColonne()-1);
+	}
 }
