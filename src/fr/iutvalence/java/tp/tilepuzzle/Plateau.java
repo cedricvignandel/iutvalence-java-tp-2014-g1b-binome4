@@ -24,6 +24,11 @@ public class Plateau
 	 */
 	private final int largeur;
 	
+	/**
+	 * Nombre de cases allumées sur le plateau
+	 */
+	private int casesAllumees;
+	
 	// TODO(fait) réfléchir aux valeurs que peuvent prendre les cases du tableau (constantes)
 	/**
 	 * Tableau des cases du plateau
@@ -38,6 +43,7 @@ public class Plateau
 	{
 		this.largeur = LARGEUR_DEFAUT;
 		this.cases = new int[this.largeur][this.largeur];
+		this.casesAllumees = 0;
 		for  (int ligne = 0; ligne < this.largeur; ligne++)
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
@@ -49,33 +55,64 @@ public class Plateau
 	}
 	
 	/**
-	 *  Affiche le plateau dans la console
+	 *  Renvoi le contenu du plateau sous forme d'une chaine
+	 * @return Chaine representant le plateau
 	 */
-	public void afficherPlateau()
+	public String toString()
 	{
+		String plateauAffichable = "";
 		for (int ligne = 0; ligne < this.largeur; ligne++)
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
-				System.out.print(this.cases[ligne][colonne]);
+				plateauAffichable = plateauAffichable+this.cases[ligne][colonne];
 			}
-			System.out.println();
+			plateauAffichable = plateauAffichable+"\n";
 		}
+		return plateauAffichable;
 	}
 	
 	/**
 	 * Change l'état de la case indiquée
-	 * @param caseAChanger Case à modifier
+	 * @param caseAInverser Case à modifier
 	 */
-	public void changerCase(Position caseAChanger)
+	public void inverserCase(Position caseAInverser)
 	{
-		if (this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] == CASE_ALLUMEE)
+		if (this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] == CASE_ALLUMEE)
 		{
-			this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] = CASE_ETEINTE;
+			this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] = CASE_ETEINTE;
+			this.casesAllumees--;
 		}
 		else 
 		{
-			this.cases[caseAChanger.getLigne()][caseAChanger.getColonne()] = CASE_ALLUMEE;
+			this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] = CASE_ALLUMEE;
+			this.casesAllumees++;
 		}
+	}
+	
+	/**
+	 * @param caseCiblee Case centrale du motif qui va changer
+	 */
+	public void inverserCasesAutourDe(Position caseCiblee)
+	{
+		inverserCase(caseCiblee);
+		for (Direction direction : Direction.values())
+			inverserCase(caseCiblee.adjacente(direction));
+	}
+
+	/**
+	 * @return la largeur
+	 */
+	public int getLargeur()
+	{
+		return this.largeur;
+	}
+	
+	/**
+	 * @return le nombre de cases allumées
+	 */
+	public int getCasesAllumees()
+	{
+		return this.casesAllumees;
 	}
 }
