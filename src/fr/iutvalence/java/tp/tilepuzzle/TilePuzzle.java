@@ -36,7 +36,7 @@ public class TilePuzzle
 	 */
 	public void jouer()
 	{
-		while (this.plateau.getCasesAllumees() == 0)
+		while (this.plateau.getCasesAllumees() < this.plateau.getLargeur()*this.plateau.getLargeur())
 		{
 			System.out.println(this.plateau.toString());
 			this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getLargeur()));
