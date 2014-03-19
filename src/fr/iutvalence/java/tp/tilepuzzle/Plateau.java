@@ -9,15 +9,11 @@ public class Plateau
 	/**
 	 * Largeur par défaut d'un plateau
 	 */
-	private static final int LARGEUR_DEFAUT = 3;
+	private static final int TAILLE_PAR_DEFAUT = 3;
 	/**
 	 * Valeur d'une case éteinte sur la grille
 	 */
-	private static final int CASE_ETEINTE = 0;
-	/**
-	 * Valeur d'une case allumée sur la grille
-	 */
-	private static final int CASE_ALLUMEE = 1;
+	private static final boolean CASE_ETEINTE = false;
 	
 	/**
 	 * Largeur du plateau
@@ -33,7 +29,7 @@ public class Plateau
 	/**
 	 * Tableau des cases du plateau
 	 */
-	private int[][] cases;
+	private boolean[][] cases;
 
 	/**
 	 * Crée un nouveau plateau de largeur par défaut, avec toutes les cases
@@ -41,8 +37,8 @@ public class Plateau
 	 */
 	public Plateau()
 	{
-		this.largeur = LARGEUR_DEFAUT;
-		this.cases = new int[this.largeur][this.largeur];
+		this.largeur = TAILLE_PAR_DEFAUT;
+		this.cases = new boolean[this.largeur][this.largeur];
 		this.casesAllumees = 0;
 		for  (int ligne = 0; ligne < this.largeur; ligne++)
 		{
@@ -65,7 +61,7 @@ public class Plateau
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
-				plateauAffichable = plateauAffichable+this.cases[ligne][colonne];
+				plateauAffichable = plateauAffichable+this.cases[ligne][colonne]+" ";
 			}
 			plateauAffichable = plateauAffichable+"\n";
 		}
@@ -73,21 +69,34 @@ public class Plateau
 	}
 	
 	/**
-	 * Change l'état de la case indiquée
-	 * @param caseAInverser Case à modifier
+	 * Retourne si oui ou non la case se trouve sur le plateau
+	 * @param position Position a vérifier
+	 * @return true si la position est valide, false si elle ne l'est pas
+	 */
+	private boolean estPositionValide(Position position)
+	{
+		return ((position.getLigne()>=0)&&(position.getLigne()<TAILLE_PAR_DEFAUT)&&((position.getColonne()>=0)&&(position.getColonne()<TAILLE_PAR_DEFAUT)));
+	}
+	/**
+	 * Inverse l'état de la case indiquée et met à jour le compteur
+	 * @param caseAInverser Case à inverser
 	 */
 	public void inverserCase(Position caseAInverser)
 	{
-		if (this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] == CASE_ALLUMEE)
-		{
-			this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] = CASE_ETEINTE;
-			this.casesAllumees--;
-		}
-		else 
-		{
-			this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] = CASE_ALLUMEE;
-			this.casesAllumees++;
-		}
+		if (!estPositionValide(caseAInverser)) return;
+		this.casesAllumees += inverserEtat(caseAInverser);
+	}
+
+	/**
+	 * Inverse l'état d'une case
+	 * @param caseAInverser Case sur laquelle on va agir
+	 * @return Renvoi 1 si la case s'est allumée ou -1 si elle s'est éteinte
+	 */
+	private int inverserEtat(Position caseAInverser)
+	{
+		this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] =! this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()];
+		if (this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()]) return 1;
+		return -1;
 	}
 	
 	/**
@@ -97,6 +106,8 @@ public class Plateau
 	{
 		inverserCase(caseCiblee);
 		for (Direction direction : Direction.values())
+			if ((caseCiblee.adjacente(direction).getLigne() >= 0) && (caseCiblee.adjacente(direction).getLigne() < this.largeur) &&
+				(caseCiblee.adjacente(direction).getColonne() >= 0) && (caseCiblee.adjacente(direction).getColonne() < this.largeur))
 			inverserCase(caseCiblee.adjacente(direction));
 	}
 
