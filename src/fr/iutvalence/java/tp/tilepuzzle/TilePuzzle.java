@@ -23,7 +23,7 @@ public class TilePuzzle
 	 */
 	public TilePuzzle()
 	{
-		this.plateau = new Plateau();
+		this.plateau = new Plateau(3,3,10);
 		this.joueur = new Joueur();
 	}
 
@@ -32,10 +32,12 @@ public class TilePuzzle
 	 */
 	public void jouer()
 	{
-		while (this.plateau.getCasesAllumees() < this.plateau.getLargeur()*this.plateau.getLargeur())
-		{
-			System.out.println(this.plateau.toString());
-			this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getHauteur(),this.plateau.getLargeur()));
-		}
+		System.out.println(this.plateau.toString());
+		System.out.println(this.plateau.getCasesAllumees());
+		//while (this.plateau.getCasesAllumees() < this.plateau.getLargeur()*this.plateau.getLargeur())
+		//{
+		//	System.out.println(this.plateau.toString());
+		//	this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getHauteur(),this.plateau.getLargeur()));
+		//}
 	}
 }
