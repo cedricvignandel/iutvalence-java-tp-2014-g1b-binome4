@@ -17,12 +17,13 @@ public class Joueur
 	
 	/**
 	 * Genère une position correspondant à la case à activer
-	 * @param taillePlateau Taille du plateau sur lequel on joue
+	 * @param hauteurPlateau Hauteur du plateau sur lequel on joue
+	 * @param largeurPlateau Largeur du plateau sur lequel on joue
 	 * @return Renvoi la position de la case à activer
 	 */
-	public Position getPosition(int taillePlateau)
+	public Position getPosition(int hauteurPlateau, int largeurPlateau)
 	{
 		Random machineAlea = new Random();
-		return new Position(machineAlea.nextInt(taillePlateau-1), machineAlea.nextInt(taillePlateau-1));
+		return new Position(machineAlea.nextInt(hauteurPlateau-1), machineAlea.nextInt(largeurPlateau-1));
 	}
 }
