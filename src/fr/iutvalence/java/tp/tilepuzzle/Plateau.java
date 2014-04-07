@@ -11,31 +11,31 @@ public class Plateau
 	/**
 	 * Largeur par défaut d'un plateau
 	 */
-	private static final int TAILLE_PAR_DEFAUT = 3;
+	protected static final int TAILLE_PAR_DEFAUT = 3;
 	/**
 	 * Valeur d'une case éteinte sur la grille
 	 */
-	private static final boolean CASE_ETEINTE = false;
+	protected static final boolean CASE_ETEINTE = false;
 	
 	/**
 	 * Largeur du plateau
 	 */
-	private final int largeur;
+	protected int largeur;
 	
 	/**
 	 * Hauteur du plateau
 	 */
-	private final int hauteur;
+	protected int hauteur;
 	
 	/**
 	 * Nombre de cases allumées sur le plateau
 	 */
-	private int casesAllumees;
+	protected int casesAllumees;
 	
 	/**
 	 * Tableau des cases du plateau
 	 */
-	private boolean[][] cases;
+	protected boolean[][] cases;
 
 	/**
 	 * Crée un nouveau plateau de largeur et hauteur par défaut, avec toutes les cases
@@ -131,7 +131,7 @@ public class Plateau
 	 * @param position Position a vérifier
 	 * @return true si la position est valide, false si elle ne l'est pas
 	 */
-	private boolean estPositionValide(Position position)
+	public boolean estPositionValide(Position position)
 	{
 		return ((position.getLigne()>=0)&&(position.getLigne()<this.hauteur)&&((position.getColonne()>=0)&&(position.getColonne()<this.largeur)));
 	}
@@ -139,7 +139,7 @@ public class Plateau
 	 * Inverse l'état de la case indiquée et met à jour le compteur
 	 * @param caseAInverser Case à inverser
 	 */
-	public void inverserCase(Position caseAInverser)
+	private void inverserCase(Position caseAInverser)
 	{
 		if (!estPositionValide(caseAInverser)) return;
 		this.casesAllumees += inverserEtat(caseAInverser);
