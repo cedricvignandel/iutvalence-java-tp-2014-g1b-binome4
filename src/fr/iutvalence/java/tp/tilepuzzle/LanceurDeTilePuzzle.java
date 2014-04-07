@@ -19,7 +19,8 @@ public class LanceurDeTilePuzzle
 	{
 		System.out.println("Création de la partie");
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		TilePuzzle partieDeTilePuzzle = new TilePuzzle(fdp);
+		Affichage affichage = new AffichageConsole();
+		TilePuzzle partieDeTilePuzzle = new TilePuzzle(fdp, affichage);
 		System.out.println("Demarrage de la partie");
 		partieDeTilePuzzle.jouer();
 		System.out.println("Fin de la partie");
