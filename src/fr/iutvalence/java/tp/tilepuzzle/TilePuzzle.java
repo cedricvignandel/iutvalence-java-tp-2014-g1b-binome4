@@ -1,6 +1,5 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
-// TODO(fait) écrire un commentaire plus précis
 /**
  * Classe principale du jeu, initialise la partie en créant un plateau et un joueur.
  */
@@ -23,8 +22,8 @@ public class TilePuzzle
 	 */
 	public TilePuzzle()
 	{
-		this.plateau = new Plateau(3,3,10);
-		this.joueur = new Joueur();
+		this.plateau = new Plateau(3,3);
+		this.joueur = new JoueurClavier();
 	}
 
 	/**
@@ -33,11 +32,10 @@ public class TilePuzzle
 	public void jouer()
 	{
 		System.out.println(this.plateau.toString());
-		System.out.println(this.plateau.getCasesAllumees());
-		//while (this.plateau.getCasesAllumees() < this.plateau.getLargeur()*this.plateau.getLargeur())
-		//{
-		//	System.out.println(this.plateau.toString());
-		//	this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getHauteur(),this.plateau.getLargeur()));
-		//}
+		while (this.plateau.getCasesAllumees() < this.plateau.getHauteur()*this.plateau.getLargeur())
+		{
+			this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getHauteur(),this.plateau.getLargeur()));
+			System.out.println(this.plateau.toString());
+		}
 	}
 }

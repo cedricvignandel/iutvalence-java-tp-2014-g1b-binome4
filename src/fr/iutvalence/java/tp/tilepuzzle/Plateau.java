@@ -98,15 +98,12 @@ public class Plateau
 			}
 		}
 		
-		//TODO: Faire marcher ce truc
 		int nombreDeCasesAAllumer = (int) Math.round((difficulte/20.0)*this.hauteur*this.largeur);
-		System.out.println("@"+nombreDeCasesAAllumer);
 		Random machineAlea = new Random();
 		while (this.casesAllumees != nombreDeCasesAAllumer )
 		{
 			
 			Position positionAlea = new Position(machineAlea.nextInt(this.hauteur-1), machineAlea.nextInt(this.largeur-1));
-			System.out.println("#"+positionAlea);
 			this.inverserCasesAutourDe(positionAlea);
 		}
 	}

@@ -11,7 +11,7 @@ public class LanceurDeTilePuzzle
 {
 	/**
 	 * Methode initiale, crée la partie et affiche son 
-	 * état(en création, démarrage ou terminé)
+	 * état actuel(en création, démarrage ou terminé)
 	 * @param args Arguments de la ligne de commande, il n'y en a aucun pour
 	 * l'instant.
 	 */
