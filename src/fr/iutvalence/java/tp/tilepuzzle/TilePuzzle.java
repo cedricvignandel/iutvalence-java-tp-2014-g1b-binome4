@@ -19,10 +19,11 @@ public class TilePuzzle
 	/**
 	 * Crée une partie prête à être jouée.
 	 * Cela implique la mise en place d'un plateau et d'un joueur pour cette partie.
+	 * @param fdp Fabrique de plateau utilisée pour la partie
 	 */
-	public TilePuzzle()
+	public TilePuzzle(FabriqueDePlateau fdp)
 	{
-		this.plateau = new Plateau(3,3);
+		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
 		this.joueur = new JoueurClavier();
 	}
 

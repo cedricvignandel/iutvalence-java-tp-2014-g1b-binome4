@@ -33,13 +33,25 @@ public class Position
 	public static Position parsePosition(String chaine)
 	{
 		int separateur = chaine.indexOf("/");
-		if (separateur== -1)
+		if (separateur == -1)
 		{
-			return null;
+			separateur = chaine.indexOf(",");
+			if (separateur == -1)
+			{
+				separateur = chaine.indexOf("|");
+				if (separateur == -1)
+				{
+					separateur = chaine.indexOf("-");
+					if (separateur == -1)
+					{
+						return null;
+					}
+				}
+			}
 		}
 		int ligne = Integer.parseInt(chaine.substring(0,separateur));
 		int colonne = Integer.parseInt(chaine.substring(separateur+1));
-		return new Position(ligne,colonne);
+		return new Position(ligne-1,colonne-1);
 	}
 
 	/**

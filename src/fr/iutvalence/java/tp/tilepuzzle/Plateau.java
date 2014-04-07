@@ -1,7 +1,5 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
-import java.util.Random;
-
 /**
  * Définit un plateau de jeu, il est défini par une hauteur et une largeur, 
  * représentées en nombre de cases, chacune pouvant être allumée ou éteinte.
@@ -38,73 +36,24 @@ public class Plateau
 	protected boolean[][] cases;
 
 	/**
-	 * Crée un nouveau plateau de largeur et hauteur par défaut, avec toutes les cases
-	 * éteintes.
+	 * Crée un nouveau plateau a partir du tableau fourni
+	 * @param tableau Tableau à partir duquel on génère le plateau
 	 */
-	public Plateau()
+	public Plateau(boolean[][] tableau)
 	{
-		this.hauteur = TAILLE_PAR_DEFAUT;
-		this.largeur = TAILLE_PAR_DEFAUT;
-		this.cases = new boolean[this.hauteur][this.largeur];
+		this.hauteur = tableau.length;
+		this.largeur = tableau[0].length;
+		this.cases = tableau;
 		this.casesAllumees = 0;
 		for  (int ligne = 0; ligne < this.hauteur; ligne++)
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
-				this.cases[ligne][colonne] = CASE_ETEINTE;
+				if (this.cases[ligne][colonne] != CASE_ETEINTE)
+				{
+					this.casesAllumees++;
+				}
 			}
-		}
-	}
-	
-	/**
-	 * Crée un nouveau plateau de hauteur et largeur indiquées, avec toutes les cases
-	 * éteintes.
-	 * @param hauteur hauteur du plateau
-	 * @param largeur largeur du plateau
-	 */
-	public Plateau(int hauteur, int largeur)
-	{
-		this.hauteur = hauteur;
-		this.largeur = largeur;
-		this.cases = new boolean[this.hauteur][this.largeur];
-		this.casesAllumees = 0;
-		for  (int ligne = 0; ligne < this.hauteur; ligne++)
-		{
-			for (int colonne = 0; colonne < this.largeur; colonne++)
-			{
-				this.cases[ligne][colonne] = CASE_ETEINTE;
-			}
-		}
-	}
-	
-	/**
-	 * Crée un nouveau plateau de largeur par défaut, avec un certain nombre de cases allumées
-	 * en fonction d'une difficulté(difficulté 10 --> 50% de cases allumées)
-	 * @param hauteur hauteur du plateau
-	 * @param largeur largeur du plateau
-	 * @param difficulte difficulté
-	 */
-	public Plateau(int hauteur, int largeur, int difficulte)
-	{
-		this.hauteur = hauteur;
-		this.largeur = largeur;
-		this.cases = new boolean[this.hauteur][this.largeur];
-		this.casesAllumees = 0;
-		for  (int ligne = 0; ligne < this.hauteur; ligne++)
-		{
-			for (int colonne = 0; colonne < this.largeur; colonne++)
-			{
-				this.cases[ligne][colonne] = CASE_ETEINTE;
-			}
-		}
-		
-		int nombreDeCasesAAllumer = (int) Math.round((difficulte/20.0)*this.hauteur*this.largeur);
-		Random machineAlea = new Random();
-		while (this.casesAllumees != nombreDeCasesAAllumer )
-		{
-			
-			Position positionAlea = new Position(machineAlea.nextInt(this.hauteur-1), machineAlea.nextInt(this.largeur-1));
-			this.inverserCasesAutourDe(positionAlea);
 		}
 	}
 	
@@ -119,7 +68,14 @@ public class Plateau
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
-				plateauAffichable = plateauAffichable+this.cases[ligne][colonne]+" ";
+				if (this.cases[ligne][colonne])
+				{
+					plateauAffichable = plateauAffichable+"O"+" ";
+				}
+				else
+				{
+					plateauAffichable = plateauAffichable+"-"+" ";
+				}
 			}
 			plateauAffichable = plateauAffichable+"\n";
 		}

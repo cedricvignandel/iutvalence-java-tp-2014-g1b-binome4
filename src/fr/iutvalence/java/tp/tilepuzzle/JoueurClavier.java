@@ -10,6 +10,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class JoueurClavier extends Joueur
 {
+	/**
+	 * Lecteur sur l'entrée standard
+	 */
 	private BufferedReader consoleReader;
 
 	/**
@@ -54,7 +57,7 @@ public class JoueurClavier extends Joueur
 	{
 		try
 		{
-			return Position.parsePosition(consoleReader.readLine());
+			return Position.parsePosition(this.consoleReader.readLine());
 		}
 		catch (IOException e)
 		{
