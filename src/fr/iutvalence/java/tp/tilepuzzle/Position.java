@@ -21,9 +21,25 @@ public class Position
 	 */
 	public Position(int ligne, int colonne)
 	{
-		super();
 		this.ligne = ligne;
 		this.colonne = colonne;
+	}
+
+	/**
+	 * Genere une position à partir d'une chaine de caractères de la forme LIGNE/COLONNE
+	 * @param chaine La chaine a convertir
+	 * @return Renvoi une nouvelle position
+	 */
+	public static Position parsePosition(String chaine)
+	{
+		int separateur = chaine.indexOf("/");
+		if (separateur== -1)
+		{
+			return null;
+		}
+		int ligne = Integer.parseInt(chaine.substring(0,separateur));
+		int colonne = Integer.parseInt(chaine.substring(separateur+1));
+		return new Position(ligne,colonne);
 	}
 
 	/**
@@ -57,4 +73,5 @@ public class Position
 	{
 		return new Position(this.getLigne()+direction.obtenirOffsetLigne(),this.getColonne()+direction.obtenirOffsetColonne());
 	}
+	
 }
