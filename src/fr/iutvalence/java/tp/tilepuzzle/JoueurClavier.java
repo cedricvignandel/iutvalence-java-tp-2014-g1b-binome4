@@ -57,9 +57,17 @@ public class JoueurClavier extends Joueur
 	{
 		try
 		{
-			return Position.parsePosition(this.consoleReader.readLine());
+			return Position.parsePosition(this.consoleReader.readLine(), hauteurPlateau, largeurPlateau);
 		}
 		catch (IOException e)
+		{
+			return null;
+		}
+		catch (FormatInvalideException e)
+		{
+			return null;
+		}
+		catch (PositionInexistanteException e)
 		{
 			return null;
 		}

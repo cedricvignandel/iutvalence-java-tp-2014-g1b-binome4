@@ -26,11 +26,15 @@ public class Position
 	}
 
 	/**
-	 * Genere une position à partir d'une chaine de caractères de la forme LIGNE/COLONNE
+	 * Genere une position à partir d'une chaine de caractères de la forme [0-9]*[/-,|][0-9]*
 	 * @param chaine La chaine a convertir
+	 * @param ligneMax Ligne à partir de laquelle la position est invalide
+	 * @param colonneMax Colonne à partir de laquelle la position est invalide
 	 * @return Renvoi une nouvelle position
+	 * @throws FormatInvalideException Format de la chiane invalide
+	 * @throws PositionInexistanteException Position hors des limites
 	 */
-	public static Position parsePosition(String chaine)
+	public static Position parsePosition(String chaine, int ligneMax, int colonneMax) throws FormatInvalideException, PositionInexistanteException
 	{
 		int separateur = chaine.indexOf("/");
 		if (separateur == -1)
@@ -44,14 +48,18 @@ public class Position
 					separateur = chaine.indexOf("-");
 					if (separateur == -1)
 					{
-						return null;
+						throw new FormatInvalideException();
 					}
 				}
 			}
 		}
 		int ligne = Integer.parseInt(chaine.substring(0,separateur));
 		int colonne = Integer.parseInt(chaine.substring(separateur+1));
-		return new Position(ligne-1,colonne-1);
+		if ((ligne >= ligneMax) || (colonne >= colonneMax) || (ligne < 0) || (colonne < 0))
+		{
+			throw new PositionInexistanteException();
+		}
+		return new Position(ligne,colonne);
 	}
 
 	/**
