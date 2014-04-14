@@ -1,5 +1,8 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Définit un plateau de jeu, il est défini par une hauteur et une largeur, 
  * représentées en nombre de cases, chacune pouvant être allumée ou éteinte.
@@ -33,28 +36,20 @@ public class Plateau
 	/**
 	 * Tableau des cases du plateau
 	 */
-	protected boolean[][] cases;
+	protected Set<Position> cases = new HashSet<Position>();
 
 	/**
-	 * Crée un nouveau plateau a partir du tableau fourni
-	 * @param tableau Tableau à partir duquel on génère le plateau
+	 * Crée un nouveau plateau a partir de la hauteur, de la largeur et de l'ensemble de cases fournis
+	 * @param hauteur Hauteur du plateau
+	 * @param largeur Largeur du plateau
+	 * @param cases Ensemble des cases allumées
 	 */
-	public Plateau(boolean[][] tableau)
+	public Plateau(int hauteur, int largeur, Set<Position> cases)
 	{
-		this.hauteur = tableau.length;
-		this.largeur = tableau[0].length;
-		this.cases = tableau;
-		this.casesAllumees = 0;
-		for  (int ligne = 0; ligne < this.hauteur; ligne++)
-		{
-			for (int colonne = 0; colonne < this.largeur; colonne++)
-			{
-				if (this.cases[ligne][colonne] != CASE_ETEINTE)
-				{
-					this.casesAllumees++;
-				}
-			}
-		}
+		this.hauteur = hauteur;
+		this.largeur = largeur;
+		this.cases = cases;
+		this.casesAllumees = this.cases.size();
 	}
 	
 	/**
@@ -63,23 +58,23 @@ public class Plateau
 	 */
 	public String toString()
 	{
-		String plateauAffichable = "";
+		StringBuilder plateauAffichable = new StringBuilder();
 		for (int ligne = 0; ligne < this.hauteur; ligne++)
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
-				if (this.cases[ligne][colonne])
+				if (this.cases.contains(new Position(ligne,colonne)))
 				{
-					plateauAffichable = plateauAffichable+"O"+" ";
+					plateauAffichable.append("O ");
 				}
 				else
 				{
-					plateauAffichable = plateauAffichable+"-"+" ";
+					plateauAffichable.append("- ");
 				}
 			}
-			plateauAffichable = plateauAffichable+"\n";
+			plateauAffichable.append("\n");
 		}
-		return plateauAffichable;
+		return plateauAffichable.toString();
 	}
 	
 	/**
@@ -98,19 +93,24 @@ public class Plateau
 	private void inverserCase(Position caseAInverser)
 	{
 		if (!estPositionValide(caseAInverser)) return;
-		this.casesAllumees += inverserEtat(caseAInverser);
+		this.inverserEtat(caseAInverser);
+		this.casesAllumees = this.cases.size();
 	}
 
 	/**
 	 * Inverse l'état d'une case
 	 * @param caseAInverser Case sur laquelle on va agir
-	 * @return Renvoi 1 si la case s'est allumée ou -1 si elle s'est éteinte
 	 */
-	private int inverserEtat(Position caseAInverser)
+	private void inverserEtat(Position caseAInverser)
 	{
-		this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()] =! this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()];
-		if (this.cases[caseAInverser.getLigne()][caseAInverser.getColonne()]) return 1;
-		return -1;
+		if (this.cases.contains(caseAInverser))
+		{
+			this.cases.remove(caseAInverser);
+		}
+		else
+		{
+			this.cases.add(caseAInverser);
+		}
 	}
 	
 	/**

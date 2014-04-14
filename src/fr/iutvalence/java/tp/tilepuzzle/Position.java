@@ -93,5 +93,27 @@ public class Position
 	{
 		return new Position(this.getLigne()+direction.obtenirOffsetLigne(),this.getColonne()+direction.obtenirOffsetColonne());
 	}
+
+	/* 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 * Une position est égale à une autre si et seulement si les colonnes et les lignes sont identiques.
+	 */
+	@Override
+	public boolean equals(Object arg0)
+	{
+		if ((((Position) arg0).getColonne() == this.getColonne()) && (((Position) arg0).getLigne() == this.getLigne()))
+			return true;
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
+		int hash = this.colonne-this.ligne;
+		return hash;
+	}
 	
 }
