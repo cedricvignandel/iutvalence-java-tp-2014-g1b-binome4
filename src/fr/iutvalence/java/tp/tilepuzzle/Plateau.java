@@ -58,23 +58,23 @@ public class Plateau
 	 */
 	public String toString()
 	{
-		StringBuilder plateauAffichable = new StringBuilder();
+		String plateauAffichable = "";
 		for (int ligne = 0; ligne < this.hauteur; ligne++)
 		{
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
 				if (this.cases.contains(new Position(ligne,colonne)))
 				{
-					plateauAffichable.append("O ");
+					plateauAffichable += "O ";
 				}
 				else
 				{
-					plateauAffichable.append("- ");
+					plateauAffichable += "- ";
 				}
 			}
-			plateauAffichable.append("\n");
+			plateauAffichable += "\n";
 		}
-		return plateauAffichable.toString();
+		return plateauAffichable;
 	}
 	
 	/**
