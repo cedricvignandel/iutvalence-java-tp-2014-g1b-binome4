@@ -18,9 +18,10 @@ public class LanceurDeTilePuzzle
 	public static void main(String[] args)
 	{
 		System.out.println("Création de la partie");
+		Joueur joueur = new JoueurClavier();
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
 		Affichage affichage = new AffichageConsole();
-		TilePuzzle partieDeTilePuzzle = new TilePuzzle(fdp, affichage);
+		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp, affichage);
 		System.out.println("Demarrage de la partie");
 		partieDeTilePuzzle.jouer();
 		System.out.println("Fin de la partie");
