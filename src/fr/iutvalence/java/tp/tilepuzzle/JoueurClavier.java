@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Définit un joueur, capable d'interagir avec le plateau via une entrée clavier
  */
-public class JoueurClavier extends Joueur
+public class JoueurClavier implements Joueur
 {
 	/**
 	 * Lecteur sur l'entrée standard

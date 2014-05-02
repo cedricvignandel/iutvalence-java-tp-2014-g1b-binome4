@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Définit un joueur, capable d'interagir de façon aléatoire avec le plateau.
  */
-public class JoueurAlea extends Joueur
+public class JoueurAlea implements Joueur
 {
 	/**
 	 * Crée un nouveau joueur aléatoire

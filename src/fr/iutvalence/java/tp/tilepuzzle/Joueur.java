@@ -3,7 +3,7 @@ package fr.iutvalence.java.tp.tilepuzzle;
 /**
  * Définit un joueur, capable d'interagir avec le plateau.
  */
-public abstract class Joueur
+public interface Joueur
 {
 	/**
 	 * Renvoi une position correspondant à la case à activer
@@ -11,5 +11,5 @@ public abstract class Joueur
 	 * @param largeurPlateau Largeur du plateau sur lequel on joue
 	 * @return Renvoi la position de la case à activer, ou <tt>null</tt> si erreur
 	 */
-	public abstract Position getPosition(int hauteurPlateau, int largeurPlateau);
+	public Position getPosition(int hauteurPlateau, int largeurPlateau);
 }
