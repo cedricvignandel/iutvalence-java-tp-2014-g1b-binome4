@@ -80,6 +80,7 @@ public class FabriqueDePlateauAvecFichier implements FabriqueDePlateau
 		Plateau plateau = new Plateau(hauteur, largeur, cases);
 		
 		// TODO: Ajouter le remplissage des cases du tableau
+		// TODO : attention, en cas d'erreur il serait plus judicieux de retourner null
 		
 		return plateau;
 	}
