@@ -5,6 +5,12 @@ package fr.iutvalence.java.tp.tilepuzzle;
  */
 public interface Affichage
 {
+	
+	/**
+	 * Affiche la demande de position
+	 */
+	public void afficherDemandePosition();
+	
 	/**
 	 * Affiche le plateau transmis
 	 * @param plateau Plateau a afficher

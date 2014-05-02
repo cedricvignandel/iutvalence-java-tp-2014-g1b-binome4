@@ -29,7 +29,7 @@ public class FabriqueDePlateauAleatoire implements FabriqueDePlateau
 		
 		int nombreDeCasesAAllumer = (int) Math.round((difficulte/20.0)*hauteur*largeur);
 		Random machineAlea = new Random();
-		while (plateau.getCasesAllumees() != nombreDeCasesAAllumer)
+		while (plateau.obtenirNombreDeCasesAllumees() != nombreDeCasesAAllumer)
 		{
 			Position positionAlea = new Position(machineAlea.nextInt(hauteur-1), machineAlea.nextInt(largeur-1));
 			plateau.inverserCasesAutourDe(positionAlea);

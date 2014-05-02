@@ -9,17 +9,17 @@ public class TilePuzzle
 	/**
 	 * Plateau
 	 */
-	private Plateau plateau;
+	private final Plateau plateau;
 	
 	/**
 	 * Joueur
 	 */
-	private Joueur joueur;
+	private final Joueur joueur;
 	
 	/**
 	 * Support d'affichage
 	 */
-	private Affichage affichage;
+	private final Affichage affichage;
 	
 	/**
 	 * Crée une partie prête à être jouée.
@@ -30,6 +30,7 @@ public class TilePuzzle
 	 */
 	public TilePuzzle(Joueur joueur, FabriqueDePlateau fdp, Affichage affichage)
 	{
+		// TODO définir des constantes
 		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
 		this.joueur = joueur;
 		this.affichage = affichage;
@@ -40,11 +41,11 @@ public class TilePuzzle
 	 */
 	public void jouer()
 	{
-		this.affichage.afficherPlateau(this.plateau);
-		while (this.plateau.getCasesAllumees() < this.plateau.getHauteur()*this.plateau.getLargeur())
+		while (this.plateau.obtenirNombreDeCasesAllumees() < this.plateau.obtenirHauteur()*this.plateau.obtenirLargeur())
 		{
-			this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.getHauteur(),this.plateau.getLargeur()));
 			this.affichage.afficherPlateau(this.plateau);
+			this.affichage.afficherDemandePosition();
+			this.plateau.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.obtenirHauteur(),this.plateau.obtenirLargeur()));
 		}
 	}
 }
