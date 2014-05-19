@@ -8,7 +8,7 @@ package fr.iutvalence.java.tp.tilepuzzle;
 /**
  * Classe initiale de l'application, permet de lancer la partie.
  */
-public class LanceurDeTilePuzzle
+public class LanceurDeTilePuzzleGraphique
 {
 	/**
 	 * Methode initiale, crée la partie et affiche son 
@@ -22,7 +22,7 @@ public class LanceurDeTilePuzzle
 		Joueur joueur = new JoueurClavier();
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
 		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp);
-		Affichage affichage = new AffichageConsole();
+		Affichage affichage = new AffichageFenetre(partieDeTilePuzzle.obtenirLargeurPlateau(), partieDeTilePuzzle.obtenirHauteurPlateau());
 		partieDeTilePuzzle.associerAffichage(affichage);
 		System.out.println("Demarrage de la partie");
 		partieDeTilePuzzle.jouer();
