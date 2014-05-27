@@ -11,6 +11,11 @@ public class TilePuzzle
 	 */
 	private final Plateau plateau;
 	
+	public Plateau getPlateau()
+	{
+		return this.plateau;
+	}
+
 	/**
 	 * Joueur
 	 */
@@ -30,7 +35,7 @@ public class TilePuzzle
 	public TilePuzzle(Joueur joueur, FabriqueDePlateau fdp)
 	{
 		// TODO définir des constantes
-		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
+		this.plateau = fdp.obtenirPlateauDefini(10, 6, 10);
 		this.joueur = joueur;
 	}
 

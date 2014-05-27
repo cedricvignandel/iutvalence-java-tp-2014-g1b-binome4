@@ -17,17 +17,22 @@ public class AffichageFenetre implements Affichage
  * 
  * @param args
  */
+	
+	private Position positionCase ;
 	public AffichageFenetre(int largeur, int hauteur)
 	{
 		JFrame fenetre = new JFrame();
 		fenetre.setTitle("Tile Puzzle");
-		fenetre.setSize(200,200);
+		fenetre.setSize(hauteur*75,largeur*75);
 		fenetre.setLocationRelativeTo(null);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.getContentPane().setLayout(new GridLayout(largeur,hauteur));
-		for(int compteurcase=0;compteurcase<(largeur*hauteur) ;compteurcase++)
+		for(int hauteurCase=0 ; hauteurCase<hauteur ; hauteurCase++)
 		{
-			fenetre.getContentPane().add(new JButton());
+			for(int largeurCase=0 ; largeurCase<largeur ; largeurCase++)
+			{
+				fenetre.getContentPane().add(new MonJButton(positionCase = new Position(largeurCase,hauteurCase)));
+			}
 		}
 		fenetre.setVisible(true);
 		

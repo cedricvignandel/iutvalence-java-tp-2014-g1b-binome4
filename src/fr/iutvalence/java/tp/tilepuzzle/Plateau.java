@@ -140,7 +140,11 @@ public class Plateau
 	{
 		return this.nombreDeCasesAllumees;
 	}
-
+/**
+ * 
+ * @param position
+ * @return
+ */
 	public boolean estCaseAllumee(Position position)
 	{
 		return this.cases.contains(position);
